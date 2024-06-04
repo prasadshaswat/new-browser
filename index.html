@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shaswat's Personal Page</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -24,14 +26,18 @@
 
         <section class="social-icons">
             <a href="https://www.youtube.com" target="_blank"><img src="youtube.png" alt="YouTube"></a>
-            <a href="https://www.facebook.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174848.png" alt="Facebook"></a>
-            <a href="https://www.twitter.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
-            <a href="https://www.instagram.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
-            <a href="https://www.linkedin.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn"></a>
+            <a href="https://www.facebook.com" target="_blank"><img
+                    src="https://cdn-icons-png.flaticon.com/512/174/174848.png" alt="Facebook"></a>
+            <a href="https://www.twitter.com" target="_blank"><img
+                    src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
+            <a href="https://www.instagram.com" target="_blank"><img
+                    src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+            <a href="https://www.linkedin.com" target="_blank"><img
+                    src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn"></a>
             <a href="https://www.whatsapp.com" target="_blank"><img src="whatsapp.png" alt="WhatsApp"></a>
         </section>
     </div>
-    
+
     <section class="news">
         <h2>Top Headlines</h2>
         <div class="news-container">
@@ -40,13 +46,13 @@
     </section>
 
     <footer>
-        <p>&copy; 2021 Shaswat's Personal Page</p>
+        <p>&copy; 2024 Shaswat's Personal Page</p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Get the date
             var date = new Date();
             var year = date.getFullYear();
@@ -62,7 +68,7 @@
             // Get the quote
             $.ajax({
                 url: "https://api.quotable.io/random",
-                success: function(data) {
+                success: function (data) {
                     var quote = data.content;
                     var author = data.author;
                     $("#quote").text('"' + quote + '" - ' + author);
@@ -72,9 +78,9 @@
             // Get the news
             $.ajax({
                 url: "https://newsapi.org/v2/top-headlines?country=in&apiKey=10b3f7ab71234edaa6233418e1cb466d",
-                success: function(data) {
+                success: function (data) {
                     var articles = data.articles;
-                    articles.forEach(function(article) {
+                    articles.forEach(function (article) {
                         var title = article.title;
                         var description = article.description;
                         var imageUrl = article.urlToImage;
@@ -96,7 +102,7 @@
                 url: `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`,
                 type: 'GET',
                 dataType: 'json',
-                success: function(data) {
+                success: function (data) {
                     const temperature = data.main.temp;
                     const weatherDescription = data.weather[0].description;
                     const icon = data.weather[0].icon;
@@ -107,7 +113,7 @@
                         <p id="weather-description">${weatherDescription}</p>
                     `);
                 },
-                error: function(error) {
+                error: function (error) {
                     console.log('Error:', error);
                     $('#weather').html('<p>Unable to retrieve weather data</p>');
                 }
@@ -115,4 +121,5 @@
         });
     </script>
 </body>
+
 </html>
